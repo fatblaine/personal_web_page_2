@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #0c1022;
+    color: white;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    pointer-events: none;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+}
+
+.navbar a {
+    display: inline-block;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+/* 当用户激活一个链接或鼠标悬停在链接上时，
+链接的文本将显示为背景的渐变色，而不是单一的文本颜色。 */
+.navbar a.active,
+/* 伪类用于定义鼠标悬停在元素上时的样式 */
+.navbar a:hover {
+    background: linear-gradient(45deg, #f06, #3cf);
+    /* 这个属性是 WebKit 浏览器特有的，用于设置文本的填充颜色 */
+    -webkit-text-fill-color: transparent;
+    /* 决定了背景的绘制区域 */
+    background-clip: text;
+}
+
+.home {
+    width: 100%;
+    height: 100vh;;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 10% 0;
+}
+
+.home-content {
+    /* background-color: yellowgreen; */
+    max-width: 500px;
+    margin-left: -30px;
+}
+
+.home-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: .7s;
+}
+
+.home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-content p {
+    font-size: 16px;
+    margin: 20px 0 40px;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.home-content .btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 48px;
+    /* background-color: yellowgreen; */
+    font-size: 19px;
+    color: white;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 1.8s;
+}
+
+/* 
+::before 伪元素通常与 content 属性一起使用，
+用于在元素的前面插入内容。
+这些内容可以是文本、图像、计数器等 
+*/
+.btn::before {
+    content: "";
+    /* 设置内容为空，这是必须的，即使不显示任何内容 */
+    position: absolute;
+    /* 绝对定位，相对于最近的相对定位的父元素 */
+    top: 0;
+    /* 顶部对齐父元素 */
+    left: 0;
+    /* 左侧对齐父元素 */
+    inset: 0;
+    /* 同时设置 top, right, bottom, left 为 0，覆盖整个父元素 */
+    background: linear-gradient(45deg, #f06, #3cf, #f06);
+    /* 设置背景为线性渐变 */
+    background-position: 0 0;
+    /* 背景位置起始点 */
+    background-size: 200%;
+    /* 背景大小为父元素的两倍，允许背景移动 */
+    z-index: -1;
+    /* 设置层叠顺序，使伪元素位于内容之后 */
+    border-radius: 40px;
+    /* 边框圆角 */
+    filter: blur(5px);
+    /* 模糊滤镜效果 */
+    transition: .5s ease;
+    /* 过渡效果，背景位置改变时的平滑过渡 */
+}
+
+/* 当 .btn 被悬停时，.btn::before 伪元素的样式 */
+.btn:hover::before {
+    background-position: 100% 0;
+    /* 背景位置移动，创建滑动效果 */
+}
+
+/* .btn::after 伪元素的样式 */
+.btn::after {
+    content: "";
+    /* 设置内容为空，这是必须的，即使不显示任何内容 */
+    position: absolute;
+    /* 绝对定位，相对于最近的相对定位的父元素 */
+    top: 0;
+    /* 顶部对齐父元素 */
+    left: 0;
+    /* 左侧对齐父元素 */
+    inset: 0;
+    /* 同时设置 top, right, bottom, left 为 0，覆盖整个父元素 */
+    background: linear-gradient(45deg, #f06, #3cf, #f06);
+    /* 设置背景为线性渐变 */
+    z-index: -1;
+    /* 设置层叠顺序，使伪元素位于内容之后 */
+    background-position: 0 0;
+    /* 背景位置起始点 */
+    background-size: 200%;
+    /* 背景大小为父元素的两倍，允许背景移动 */
+    border-radius: 40px;
+    /* 边框圆角 */
+    transition: .5s ease;
+    /* 过渡效果，背景位置改变时的平滑过渡 */
+}
+
+/* 当 .btn 被悬停时，.btn::after 伪元素的样式 */
+.btn:hover::after {
+    background-position: 100% 0;
+    /* 背景位置移动，创建滑动效果 */
+}
+
+/* 
+解释：
+在 .btn::before 和 .btn::after 的样式中，background-position 初始设置为 0 0，这意味着背景图像从元素的左上角开始。 
+当 .btn 被悬停时，background-position 改变为 100% 0。这里的 100% 指的是背景图像的水平位置，而 0 是垂直位置。 
+将水平位置设置为 100% 会将背景图像的右边缘与元素的右边缘对齐。因此，背景图像看起来像是向右移动了。 
+由于 background-size 设置为 200%，背景图像的宽度是元素的两倍宽，这样当它移动时，它的一部分仍然会填充元素的背景。 
+*/
+
+.home-sci a {
+    position: relative;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #f06, #3cf);
+    font-size: 20px;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 20px 0;
+    z-index: 1;
+}
+
+.home-sci a:nth-child(1) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 2.1s;
+}
+
+.home-sci a:nth-child(2) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 2.3s;
+}
+
+.home-sci a:nth-child(3) {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 2.5s;
+}
+
+.home-sci a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #f06, #3cf);    border-radius: 50%;
+    border-radius: 50%;
+    z-index: -1;
+    transition: .5s ease;
+}
+
+.home-sci a:hover::before {
+    filter: blur(5px);
+}
+
+.home-sci a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0c1022;
+    border-radius: 50%;
+    z-index: -1;
+    transform: scale(0.88);
+    transition: .5s ease;
+}
+
+.home-sci a:hover::after {
+    transform: scale(0);
+}
+
+.home-img {
+    width: 410px;
+    height: 410px;
+    opacity: 0;
+    animation: zoomIn 1s ease forwards, 
+    floatImge 4s ease-in-out infinite;
+    animation-delay: 2.1s, 3.1s;
+}
+
+.glowing-circle {
+    position: relative;
+    width: 410px;
+    height: 410px;
+    /* background-color: yellowgreen; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glowing-circle::after {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background-color: #0c1022;
+}
+
+.glowing-circle span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#f06, #3cf);
+    border-radius: 50%;
+    animation: circleRotate 5s linear infinite;
+}
+
+.glowing-circle span:nth-child(1) {
+    filter: blur(10px);
+}
+
+.glowing-circle .image {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    /* background-color: red; */
+    border-radius: 50%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.image img {
+    position: absolute;
+    /* transform: translateX(5%); */
+    max-width: 550px;
+    height: 480px;
+    object-fit: cover;
+}
+
+/* Keyframes Animation */
+@keyframes slideTop {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes zoomIn {
+     0% {
+        opacity: 0;
+         transform: scale(0);
+     }
+
+     100% {
+        opacity: 1;
+         transform: scale(1);
+     }
+}
+
+@keyframes floatImge {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-24px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes circleRotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
